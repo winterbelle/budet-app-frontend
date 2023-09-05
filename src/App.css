@@ -1,38 +1,151 @@
 .App {
-  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 100vh;
+  background-color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+  background-color: gray;
+  padding: 25px;
+  display: grid;
+  grid-auto-flow: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+#new-resource-aside {
+  display: grid;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-items: right;
+}
+
+button {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 200px;
+  max-height: 50px;
+  background-color: azure;
+}
+
+button:hover {
+  box-shadow: 1px 1px 10px black;
+}
+
+th {
+  border: 1px solid gray;
+  padding: 5px
+}
+
+.Index h1 {
+  text-align: center;
+  font-size: x-large;
+}
+
+#logo {
+  cursor: pointer;
+}
+
+.Transaction {
+  width: 100%;
+  background-color: aliceblue;
+  padding: 5px;
+  color:gray;
+}
+
+.Transaction .Info {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.Transaction .Cost {
+  text-align: right;
+}
+
+ul {
+  padding: 0;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+a {
+  color:rgb(0, 179, 255);
+}
+
+#logo a, button a {
+  color: black;
+  text-decoration: none;
+}
+
+.TransactionNew {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+form {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+form div {
+  display: grid;
+  margin-bottom: 15px;
+}
+
+.TransactionView {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.TransactionView button {
+  margin: 10px;
+}
+
+#modal {
+  background-color: rgba(0, 0, 0, 0.575);
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  z-index: 1;
+  text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#modal button {
+  margin: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hidden {
+  display: none;
+}
+
+
+@media screen and (max-width: 500px){
+  .App {
+    margin-left: 8%;
+    margin-right: 8%;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav {
+    padding: 10px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: large;
+  }
+
+  button {
+    font-size: x-small;
+  }
+
+  ul {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  h1, h2, h3, h4, h5, h6 {
+    max-width: 100px;
   }
 }

@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Router, Route, Routes } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Index from "./Pages/Index";
+import TransactionView from "./Pages/TransactionView";
+import TransactionNew from "./Pages/TransactionNew";
+import Modal from "./Components/Modal";
+import { useState, useEffect } from "react";
+
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+  const [message, setMessage] = useState({head:"", body:""})
+
+  useEffect(() => {
+    fetch(process.env.REACT_APP_BASE_URL)
+      .then((response) => response.json())
+      .then((data) => setTransactions([...data]))
+      .catch((error) => {
+        console.log("An error occurred when fetching the data.");
+      });
+  });
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <Modal message={message}/>
+      <div className="App">
+        <Navbar />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Index transactions={transactions} />} />
+            <Route path="/transactions/:id" element={<TransactionView setMessage={setMessage}/>} />
+            <Route path="/transactions/new" element={<TransactionNew />} />
+          </Routes>
+        </Router>
+      </div>
+    </ div>
   );
 }
 
